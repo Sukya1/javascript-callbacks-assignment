@@ -6,6 +6,36 @@
 // Your assignment is to do the following:
 // 1. Write a function called validateForm(e) where e is an 'event' variable (this is default
 //    behavior for forms - feel free to call it 'event' as well)
+function validate(e) {
+    let name = document.querySelector("#name").value;
+    let email = document.querySelector("#email").value;
+    let password = document.querySelector("#password").value;
+    if (name === "") {
+        alert("Name field is empty. Please enter your name.");
+        return False;
+    }
+    if (!email.includes("@")) {
+        alert("Please enter a proper email.");
+        return False;
+    }
+    if (password === "") {
+        alert("Please enter a password");
+        return False
+    }
+    if (password.length < 8) {
+        alert("Password must have 8 or more characters");
+        return False
+    }
+    return True
+}
+let submit = document.querySelector("#userForm button");
+submit.addEventListener("click", (event) =>  {
+    event.preventDefault();
+    validate(event);
+
+
+});
+
 // 2. Inside of validateForm(e), get the information of the form fields by either using querySelectors
 //    or by traversing the event object and do the following checks:
 //      2a. If the #name input element is empty, send an alert telling the user to enter their name
